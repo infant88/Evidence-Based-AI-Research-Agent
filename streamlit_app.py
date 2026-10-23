@@ -87,31 +87,24 @@ with st.sidebar:
     )
     settings.LLM_PROVIDER = provider
 
+    # Load secrets strictly server-side without exposing any inputs on the webpage
+    if hasattr(st, "secrets"):
+        if "GEMINI_API_KEY" in st.secrets and not os.getenv("GEMINI_API_KEY"):
+            settings.GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+        if "OPENAI_API_KEY" in st.secrets and not os.getenv("OPENAI_API_KEY"):
+            settings.OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+        if "ANTHROPIC_API_KEY" in st.secrets and not os.getenv("ANTHROPIC_API_KEY"):
+            settings.ANTHROPIC_API_KEY = st.secrets["ANTHROPIC_API_KEY"]
+
+    # Display secure server-side status only (no keys, no inputs)
     if provider == "gemini":
-        default_gemini_key = os.getenv("GEMINI_API_KEY", "")
-        # Also check Streamlit secrets if deployed on Streamlit Cloud
-        if not default_gemini_key and hasattr(st, "secrets") and "GEMINI_API_KEY" in st.secrets:
-            default_gemini_key = st.secrets["GEMINI_API_KEY"]
-            
-        gemini_key = st.text_input(
-            "Gemini API Key",
-            value=default_gemini_key,
-            type="password",
-            help="Stored securely in session state. Git ignored."
-        )
-        if gemini_key:
-            settings.GEMINI_API_KEY = gemini_key
-            os.environ["GEMINI_API_KEY"] = gemini_key
-
-    elif provider == "openai":
-        openai_key = st.text_input("OpenAI API Key", value=os.getenv("OPENAI_API_KEY", ""), type="password")
-        if openai_key:
-            settings.OPENAI_API_KEY = openai_key
-
-    elif provider == "anthropic":
-        anthropic_key = st.text_input("Anthropic API Key", value=os.getenv("ANTHROPIC_API_KEY", ""), type="password")
-        if anthropic_key:
-            settings.ANTHROPIC_API_KEY = anthropic_key
+        has_key = bool(settings.GEMINI_API_KEY or os.getenv("GEMINI_API_KEY"))
+        if has_key:
+            st.success("🔒 Cloud API Key Loaded (Server-Side)")
+        else:
+            st.info("ℹ️ Using local fallback (No key in environment)")
+    elif provider in ["openai", "anthropic"]:
+        st.success("🔒 Cloud Provider Active (Server-Side)")
 
     st.markdown("---")
     st.markdown("### 📊 System Status")
