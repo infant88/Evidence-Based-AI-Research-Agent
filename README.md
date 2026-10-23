@@ -1,11 +1,11 @@
 # Evidence-Based AI Research Agent
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Streamlit-App%20Live-FF4B4B?style=for-the-badge&logo=streamlit" alt="Streamlit" />
   <img src="https://img.shields.io/badge/LangGraph-Orchestration-blue?style=for-the-badge&logo=python" alt="LangGraph" />
   <img src="https://img.shields.io/badge/Retrieval-Hybrid%20RRF%20(Dense%20%2B%20BM25)-teal?style=for-the-badge" alt="Hybrid RAG" />
   <img src="https://img.shields.io/badge/Safety-AST%20SQL%20Sandbox-green?style=for-the-badge" alt="SQL Sandbox" />
   <img src="https://img.shields.io/badge/Benchmark-60%2F60%20Passed-success?style=for-the-badge" alt="Benchmark" />
-  <img src="https://img.shields.io/badge/FastAPI-Dashboard-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" />
 </p>
 
 An enterprise-grade, verifiable research agent engineered with **LangGraph** to answer complex analytical and quantitative business questions. Combines unstructured document intelligence, relational SQL analytics, and Python math computations with strict citation verification and empirical benchmark standards.
@@ -104,31 +104,42 @@ Measured against **60 golden evaluation questions** across 5 business categories
 
 ## 🚀 Quick Start
 
-### 1. One-Command Full Runner (Tests + Web UI)
+### 1. Launch the Streamlit Web Application (Recommended)
+Launch the interactive Streamlit research console:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Access at: **[http://localhost:8501](http://localhost:8501)**
+
+---
+
+### 2. Deploy to Streamlit Community Cloud (Share.streamlit.io)
+Deploy for free to the public web in 3 steps:
+1. Push your repository to GitHub (`https://github.com/infant88/Evidence-Based-AI-Research-Agent`).
+2. Go to **[share.streamlit.io](https://share.streamlit.io)** and click **"New app"**.
+3. Select your repository, set Main file path to **`streamlit_app.py`**, and click **"Deploy!"**.
+   *(Optional: In App Settings -> Secrets, add `GEMINI_API_KEY = "your_key"`)*
+
+---
+
+### 3. One-Command Full Runner (Benchmark + FastAPI UI)
 Runs the complete 60-question benchmark suite, displays the performance scorecard, and opens the Web Dashboard:
 
 ```bash
 python run_all.py
 ```
 
-Access the Web Dashboard at: **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+Access the FastAPI Dashboard at: **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 
 ---
 
-### 2. Run Only the Evaluation Benchmark
-Executes the empirical evaluation benchmark without starting the UI:
+### 4. Run Only the Evaluation Benchmark
+Executes the empirical evaluation benchmark without starting any UI:
 
 ```bash
 python evaluation/run_benchmark.py
-```
-
----
-
-### 3. Run Only the Web Dashboard
-Starts the FastAPI server independently:
-
-```bash
-python -m uvicorn src.web.server:app --host 127.0.0.1 --port 8000
 ```
 
 ---
