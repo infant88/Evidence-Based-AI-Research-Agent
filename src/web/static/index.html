@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence-Based AI Research Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-badge">EVIDENCE-AI</div>
+        <div class="brand-title">
+          <h1>Evidence-Based Research Agent</h1>
+          <p class="subtitle">LangGraph State Orchestration • Hybrid RAG • SQL Sandboxing • Empirical Benchmarks</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="status-indicator live">
+          <span class="pulse-dot"></span> Agent Engine Online
+        </span>
+        <button id="run-bench-quick-btn" class="btn btn-secondary">Run 60-Q Benchmark</button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="tab-research">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        Research Workbench
+      </button>
+      <button class="nav-tab" data-tab="tab-benchmark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Benchmark & Model Metrics
+      </button>
+      <button class="nav-tab" data-tab="tab-warehouse">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+        Data Warehouse & Documents
+      </button>
+    </nav>
+
+    <!-- TAB 1: RESEARCH WORKBENCH -->
+    <main id="tab-research" class="tab-content active">
+      <section class="query-section">
+        <div class="query-card glass-panel">
+          <div class="query-header">
+            <h3>Ask Business, Operational or Financial Research Question</h3>
+            <div class="sample-queries">
+              <span>Quick Prompts:</span>
+              <button class="chip-btn" data-query="Why did revenue decrease in September?">Why did revenue decrease in Sept?</button>
+              <button class="chip-btn" data-query="Which geographic sales region suffered the largest percentage drop in September 2024?">EMEA Regional Drop</button>
+              <button class="chip-btn" data-query="What was the root cause of the Frankfurt data center incident in September 2024?">Frankfurt Outage Root Cause</button>
+              <button class="chip-btn" data-query="Why did enterprise customer churn spike to 5.14% in September 2024?">Enterprise Churn Spike</button>
+            </div>
+          </div>
+          <form id="research-form" class="query-form">
+            <div class="input-wrapper">
+              <input type="text" id="query-input" placeholder="e.g. Why did revenue decrease in September?" value="Why did revenue decrease in September?" required />
+              <button type="submit" id="submit-btn" class="btn btn-primary">
+                <span>Investigate & Verify</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Execution Results Area -->
+      <section id="results-area" class="results-layout" style="display: none;">
+        <!-- Left Column: Final Synthesized Report -->
+        <div class="report-column glass-panel">
+          <div class="panel-header">
+            <div class="panel-title-group">
+              <h3>Evidence-Backed Research Report</h3>
+              <span id="report-elapsed" class="badge badge-outline">2.4s</span>
+            </div>
+            <div class="verification-pills">
+              <span id="pill-groundedness" class="pill pill-success">Groundedness: 100%</span>
+              <span id="pill-citations" class="pill pill-accent">Citations: 100%</span>
+              <span id="pill-verified" class="pill pill-purple">Verified & Audited</span>
+            </div>
+          </div>
+          <div id="report-body" class="markdown-render"></div>
+        </div>
+
+        <!-- Right Column: Verification & Evidence Ledger Explorer -->
+        <div class="ledger-column">
+          <!-- Step 1: LangGraph Execution Steps -->
+          <div class="glass-panel ledger-card">
+            <div class="panel-header">
+              <h4>LangGraph State Machine Path</h4>
+              <span class="badge badge-purple">State Transitions</span>
+            </div>
+            <div id="plan-steps-list" class="steps-flow"></div>
+          </div>
+
+          <!-- Step 2: Evidence Ledger -->
+          <div class="glass-panel ledger-card">
+            <div class="panel-header">
+              <h4>Verified Evidence Ledger</h4>
+              <span id="evidence-count" class="badge badge-neutral">0 Items</span>
+            </div>
+            <div id="evidence-items-container" class="evidence-scroll"></div>
+          </div>
+
+          <!-- Step 3: Sandboxed SQL & Python Executions -->
+          <div class="glass-panel ledger-card">
+            <div class="panel-header">
+              <h4>Sandboxed SQL & Math Traces</h4>
+              <span class="badge badge-green">AST Validated (Read-Only)</span>
+            </div>
+            <div id="tools-executed-container" class="tools-scroll"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading State Indicator -->
+      <div id="loading-state" class="loading-container" style="display: none;">
+        <div class="spinner"></div>
+        <div class="loading-text">
+          <h4>LangGraph Orchestrator Running</h4>
+          <p>Analyzing schema, dispatching AST-validated SQL, executing BM25+Dense RRF retrieval, and auditing citations...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 2: BENCHMARK & MODEL METRICS -->
+    <main id="tab-benchmark" class="tab-content">
+      <section class="benchmark-header-section glass-panel">
+        <div class="bench-hero">
+          <div>
+            <h2>Empirical 60-Question Model Evaluation Suite</h2>
+            <p>Measured on a fixed, reproducible test set without unsubstantiated claims.</p>
+          </div>
+          <button id="run-full-benchmark-btn" class="btn btn-primary">
+            <span>Execute Benchmark Runner</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </button>
+        </div>
+
+        <!-- KPI Scorecards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Retrieval Recall@5</span>
+            <span id="metric-recall" class="kpi-val highlight-green">--</span>
+            <span class="kpi-target">Target: ≥ 85.0%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Retrieval MRR</span>
+            <span id="metric-mrr" class="kpi-val highlight-cyan">--</span>
+            <span class="kpi-target">Target: ≥ 0.750</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Tool Selection F1</span>
+            <span id="metric-toolf1" class="kpi-val highlight-blue">--</span>
+            <span class="kpi-target">Target: ≥ 90.0%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">SQL Execution Validity</span>
+            <span id="metric-sqlsuccess" class="kpi-val highlight-green">--</span>
+            <span class="kpi-target">Target: ≥ 95.0%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Groundedness Score</span>
+            <span id="metric-grounded" class="kpi-val highlight-purple">--</span>
+            <span class="kpi-target">Target: ≥ 90.0%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Citation Accuracy</span>
+            <span id="metric-citation" class="kpi-val highlight-accent">--</span>
+            <span class="kpi-target">Target: ≥ 90.0%</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Latency (P50 / P90)</span>
+            <span id="metric-latency" class="kpi-val">-- / --</span>
+            <span class="kpi-target">Target: ≤ 4.5s / 8.5s</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Total Cost & Tokens</span>
+            <span id="metric-cost" class="kpi-val">--</span>
+            <span class="kpi-target">60 Questions Run</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Breakdown Section -->
+      <section class="glass-panel category-section">
+        <h3>Category Performance Breakdown</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Questions</th>
+                <th>Recall@5</th>
+                <th>MRR</th>
+                <th>Tool F1</th>
+                <th>SQL Success</th>
+                <th>Groundedness</th>
+                <th>Citation Acc</th>
+                <th>Mean Latency</th>
+              </tr>
+            </thead>
+            <tbody id="category-table-body">
+              <tr><td colspan="9" class="text-center">Loading evaluation report...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Full Markdown Benchmark Report -->
+      <section class="glass-panel report-viewer-section">
+        <div class="panel-header">
+          <h3>Full Benchmark Report (Markdown Output)</h3>
+        </div>
+        <div id="full-benchmark-markdown" class="markdown-render benchmark-text-preview"></div>
+      </section>
+    </main>
+
+    <!-- TAB 3: DATA WAREHOUSE & DOCUMENTS -->
+    <main id="tab-warehouse" class="tab-content">
+      <div class="warehouse-grid">
+        <!-- Relational Schema -->
+        <section class="glass-panel">
+          <div class="panel-header">
+            <h3>Relational Data Warehouse (SQLite)</h3>
+            <span class="badge badge-green">Read-Only Enforced</span>
+          </div>
+          <div id="warehouse-schema-container" class="schema-list"></div>
+        </section>
+
+        <!-- Ingested Documents -->
+        <section class="glass-panel">
+          <div class="panel-header">
+            <h3>Document Intelligence & Chunks</h3>
+            <span id="chunks-badge" class="badge badge-purple">19 Chunks</span>
+          </div>
+          <div id="docs-list-container" class="docs-list"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

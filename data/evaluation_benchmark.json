@@ -1,0 +1,1207 @@
+[
+  {
+    "id": "EVAL_FIN_01",
+    "category": "financial_anomaly",
+    "question": "Why did total corporate revenue decrease in September 2024?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag",
+      "execute_python"
+    ],
+    "expected_tables": [
+      "monthly_revenue",
+      "regional_sales"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c1",
+      "DOC-FIN-2024-Q3_c2",
+      "INC-RPT-2024-09-11_c1"
+    ],
+    "gold_answer": "Total corporate revenue dropped by 18.35% from $4.85M in August to $3.96M in September 2024 due to a 34% drop in EMEA revenue and Frankfurt data center downtime SLA penalties.",
+    "gold_citations": [
+      {
+        "source": "Q3_2024_Executive_Financial_Review.md",
+        "page": 1
+      },
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_02",
+    "category": "financial_anomaly",
+    "question": "What was the exact dollar variance and percentage decrease between August and September 2024 revenue?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_python"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c1"
+    ],
+    "gold_answer": "Gross revenue declined by $890,000, representing an 18.35% month-over-month decrease from $4,850,000 to $3,960,000.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_03",
+    "category": "financial_anomaly",
+    "question": "How much did corporate revenue miss the September 2024 internal budget target?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_python"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c1"
+    ],
+    "gold_answer": "September revenue was $3,960,000 against a target of $4,900,000, missing budget expectations by $940,000 (19.18% shortfall).",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_04",
+    "category": "financial_anomaly",
+    "question": "Why did gross margin compress from 73.0% in August to 64.1% in September 2024?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "monthly_revenue",
+      "cost_of_goods"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c3",
+      "INC-RPT-2024-09-11_c2"
+    ],
+    "gold_answer": "Gross margin compressed due to emergency server freight air courier costs ($100k surcharge) and redundancy telecom transit bandwidth fees following the Frankfurt data center outage.",
+    "gold_citations": [
+      {
+        "source": "Q3_2024_Executive_Financial_Review.md",
+        "page": 3
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_05",
+    "category": "financial_anomaly",
+    "question": "What was the total Cost of Goods Sold (COGS) in September 2024 compared to August 2024?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "cost_of_goods",
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "COGS increased from $1,310,000 in August to $1,420,000 in September 2024, driven by a surge in hardware logistics from $340k to $440k.",
+    "gold_citations": [
+      {
+        "source": "cost_of_goods",
+        "table": "cost_of_goods"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_06",
+    "category": "financial_anomaly",
+    "question": "Did corporate revenue rebound in October 2024, and to what level?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Yes, October revenue rebounded strongly to $4,620,000 with gross margin recovering to 71.9%.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_07",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 7)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_08",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 8)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_09",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 9)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_10",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 10)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_11",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 11)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_FIN_12",
+    "category": "financial_anomaly",
+    "question": "Compare Q3 2024 monthly revenues against 2023 baseline metrics in the warehouse (check 12)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "monthly_revenue"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "September 2023 baseline revenue was $3.81M compared to September 2024 revenue of $3.96M.",
+    "gold_citations": [
+      {
+        "source": "monthly_revenue",
+        "table": "monthly_revenue"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_01",
+    "category": "regional_breakdown",
+    "question": "Which geographic sales region suffered the largest percentage drop in September 2024?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c2"
+    ],
+    "gold_answer": "EMEA suffered the steepest decline, dropping 34.0% from $1,410,000 in August to $930,000 in September.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      },
+      {
+        "source": "Q3_2024_Executive_Financial_Review.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_02",
+    "category": "regional_breakdown",
+    "question": "What happened to product return rates in EMEA during September 2024?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "EMEA return rate spiked dramatically from 2.2% in August to 6.8% in September due to customer dissatisfaction with service downtime.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_03",
+    "category": "regional_breakdown",
+    "question": "How did North America perform in September 2024 relative to August?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "North America decreased moderately by 8.3% from $2,520,000 in August to $2,310,000 in September due to normal end-of-quarter procurement cycles.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_04",
+    "category": "regional_breakdown",
+    "question": "What was APAC revenue in September 2024 and why did it decline?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "regional_sales",
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c2",
+      "ADV-SCM-2024-03_c2"
+    ],
+    "gold_answer": "APAC revenue was $510,000 in September down 26.1% from $690,000 in August due to a 9-day shipping delay in high-memory GPU compute clusters.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      },
+      {
+        "source": "Supply_Chain_Advisory_Autumn_2024.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_05",
+    "category": "regional_breakdown",
+    "question": "Did LATAM revenue experience any material contraction in September 2024?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "No, LATAM remained essentially stable, recording $210,000 in September compared to $230,000 in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_06",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 6)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_07",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 7)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_08",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 8)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_09",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 9)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_10",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 10)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_11",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 11)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_REG_12",
+    "category": "regional_breakdown",
+    "question": "What was the total unit volume sold across all regions in September 2024 from warehouse (variant 12)?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "regional_sales"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Total unit sales were 6,700 units in September 2024 compared to 8,080 units in August.",
+    "gold_citations": [
+      {
+        "source": "regional_sales",
+        "table": "regional_sales"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_01",
+    "category": "operational_incident",
+    "question": "What was the root cause of the Frankfurt data center incident in September 2024?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c1"
+    ],
+    "gold_answer": "A cascaded electrical failure of the main UPS distribution bus during routine battery testing at FRA-AZ1, compounded by a faulty generator transfer switch.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_02",
+    "category": "operational_incident",
+    "question": "How long did the Frankfurt service degradation last according to post-mortem?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c1"
+    ],
+    "gold_answer": "The total degraded duration was 47 hours and 38 minutes, affecting 68% of European enterprise API requests.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_03",
+    "category": "operational_incident",
+    "question": "What was the total financial amount of contractual SLA credit penalties paid to customers?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c2",
+      "DOC-FIN-2024-Q3_c2"
+    ],
+    "gold_answer": "Total SLA service credit disbursements equaled $320,000 paid to Tier-1 enterprise clients.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_04",
+    "category": "operational_incident",
+    "question": "How much did emergency hardware replacement components cost following the Frankfurt outage?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c2"
+    ],
+    "gold_answer": "Emergency replacement and expedited air courier from Taipei cost $420,000 for four storage SAN controller backplanes.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 2
+      },
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_05",
+    "category": "operational_incident",
+    "question": "What preventative architecture improvements were implemented following the post-mortem?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c3"
+    ],
+    "gold_answer": "Installation of solid-state static transfer switches, multi-region active-active geographic replication for databases, and SLA payout capping at 25% of monthly recurring revenue.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 3
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_06",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 6)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_07",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 7)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_08",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 8)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_09",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 9)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_10",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 10)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_11",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 11)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_INC_12",
+    "category": "operational_incident",
+    "question": "Query supply chain incidents table for cost impact and delay records (table check 12)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "supply_chain_incidents"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Incidents included Frankfurt server racks ($420k impact) and Rotterdam port fiber delays ($185k impact).",
+    "gold_citations": [
+      {
+        "source": "supply_chain_incidents",
+        "table": "supply_chain_incidents"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_01",
+    "category": "product_and_pricing",
+    "question": "What pricing strategy change was announced in September 2024?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "MEMO-PROD-2024-08_c1"
+    ],
+    "gold_answer": "Mandatory deprecation of legacy fixed-tier pricing in favor of consumption-based utility billing for Nexus Cloud Data Engine and Aura AI Suite.",
+    "gold_citations": [
+      {
+        "source": "Product_Strategy_Memo_Tier_Migration.md",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_02",
+    "category": "product_and_pricing",
+    "question": "How did enterprise and mid-market customers react to the tier migration?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "MEMO-PROD-2024-08_c2"
+    ],
+    "gold_answer": "Around 35% of mid-market customers placed subscription expansions on hold, causing a freeze of $280,000 in projected September new-business conversions.",
+    "gold_citations": [
+      {
+        "source": "Product_Strategy_Memo_Tier_Migration.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_03",
+    "category": "product_and_pricing",
+    "question": "What intervention restored customer purchasing velocity in late September?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "MEMO-PROD-2024-08_c3"
+    ],
+    "gold_answer": "A 90-day grace period with grandfathered ceiling caps was rolled out on September 24 to ease billing predictability concerns.",
+    "gold_citations": [
+      {
+        "source": "Product_Strategy_Memo_Tier_Migration.md",
+        "page": 3
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_04",
+    "category": "product_and_pricing",
+    "question": "What are the primary products and tiers in the corporate product catalog table?",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Products include Nexus Cloud Data Engine ($12.5k, Enterprise), Aura AI Analytics Suite ($4.8k, Professional), and Developer Core Toolchain ($1.2k, Standard).",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_05",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 5)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_06",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 6)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_07",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 7)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_08",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 8)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_09",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 9)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_10",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 10)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_11",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 11)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_PRD_12",
+    "category": "product_and_pricing",
+    "question": "Verify pricing tier definitions and unit costs for product catalog entries (catalog check 12)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "product_catalog"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Nexus Cloud Data Engine is $12,500/unit and Sentinel Security Gateway is $8,500/unit.",
+    "gold_citations": [
+      {
+        "source": "product_catalog",
+        "table": "product_catalog"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_01",
+    "category": "marketing_and_churn",
+    "question": "Why did enterprise customer churn spike to 5.14% in September 2024?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "customer_churn"
+    ],
+    "gold_chunks": [
+      "DOC-FIN-2024-Q3_c4",
+      "INC-RPT-2024-09-11_c2"
+    ],
+    "gold_answer": "Enterprise churn jumped to 5.14% (19 accounts cancelled versus typical baseline of 5 accounts), with 12 departing accounts citing the Frankfurt outage.",
+    "gold_citations": [
+      {
+        "source": "customer_churn",
+        "table": "customer_churn"
+      },
+      {
+        "source": "Q3_2024_Executive_Financial_Review.md",
+        "page": 4
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_02",
+    "category": "marketing_and_churn",
+    "question": "How much ARR was lost from departing enterprise accounts in September?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "INC-RPT-2024-09-11_c2"
+    ],
+    "gold_answer": "Annualized recurring revenue loss from the 19 departing enterprise accounts totaled $1,150,000.",
+    "gold_citations": [
+      {
+        "source": "Incident_Report_Frankfurt_2024_09.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_03",
+    "category": "marketing_and_churn",
+    "question": "How much was marketing spend reduced in September 2024?",
+    "expected_tools": [
+      "execute_sql",
+      "execute_rag"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [
+      "MKT-REP-2024-Q3_c1"
+    ],
+    "gold_answer": "Marketing spend was reduced by 38% from $425,000 in August to $260,000 in September, with LinkedIn ads reduced from $185k to $110k.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      },
+      {
+        "source": "Marketing_Performance_Report_Q3_2024.md",
+        "page": 1
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_04",
+    "category": "marketing_and_churn",
+    "question": "Did the marketing budget cut harm the customer acquisition cost (CAC)?",
+    "expected_tools": [
+      "execute_rag"
+    ],
+    "expected_tables": [],
+    "gold_chunks": [
+      "MKT-REP-2024-Q3_c2"
+    ],
+    "gold_answer": "No, customer acquisition cost remained healthy at $56.40 per marketing qualified lead.",
+    "gold_citations": [
+      {
+        "source": "Marketing_Performance_Report_Q3_2024.md",
+        "page": 2
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_05",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 5)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_06",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 6)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_07",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 7)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_08",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 8)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_09",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 9)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_10",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 10)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_11",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 11)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  },
+  {
+    "id": "EVAL_MKT_12",
+    "category": "marketing_and_churn",
+    "question": "Examine monthly marketing spend across channels in 2024 from warehouse (channel query 12)",
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "expected_tables": [
+      "marketing_spend"
+    ],
+    "gold_chunks": [],
+    "gold_answer": "Google Search was $120,000 and LinkedIn Ads was $110,000 in September 2024.",
+    "gold_citations": [
+      {
+        "source": "marketing_spend",
+        "table": "marketing_spend"
+      }
+    ]
+  }
+]
